@@ -1,13 +1,18 @@
-const express = require('express')
-const cors = require('cors')
-const app = express()
-
+const express = require('express');
+const reload = require('reload')
+const app = express();
 
 app.use(express.static(__dirname))
 
 app.get('/', function(req, res) {
-    res.sendFile('index.html', { root: __dirname })
+    res.sendFile('index.html', { root: __dirname });
 });
 
-app.listen(process.env.PORT || 3000, () => {})
+reload(app)
+.then(function (reloadReturned) {
+    app.listen(process.env.PORT || 3000, () => console.log('listening on port 3000.'));
+})
+.catch(function (err) {
+    console.error('Reload could not start server', err)
+})
 

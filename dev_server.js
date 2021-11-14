@@ -10,7 +10,7 @@ app.get('/', function(req, res) {
 
 reload(app)
 .then(function (reloadReturned) {
-    app.listen(process.env.port || 3000, () => console.log('listening on port 3000.'));
+    app.listen(process.env.PORT || 3000, () => console.log('listening on port 3000.'));
 })
 .catch(function (err) {
     console.error('Reload could not start server', err)
