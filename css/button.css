@@ -1,0 +1,35 @@
+.button {
+    align-items: center;
+    appearance: button;
+    background-color: #0276FF;
+    border-radius: 8px;
+    border-style: none;
+    box-shadow: rgba(255, 255, 255, 0.26) 0 1px 2px inset;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-family: "RM Neue", sans-serif;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: auto;
+    padding: 10px 21px;
+    text-align: center;
+    text-transform: none;
+    transition: color .13s ease-in-out, background .13s ease-in-out,opacity .13s ease-in-out,box-shadow .13s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 200px;
+}
+.button:active {
+    background-color: #006AE8;
+}
+.button:not(:active) {
+    background-color: #006AE8;
+}
+.button:focus {
+    background-color: #1C84FF;
+}
+.button:focus:not(:active) {
+    background-color: #006AE8;
+}

@@ -1,0 +1,18 @@
+
+
+
+#cursor {
+    visibility: hidden;
+    position: fixed;
+    border-radius: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    pointer-events: none;
+    left: -100px;
+    top: 50%;
+    mix-blend-mode: difference;
+    background-color: transparent;
+    z-index: 10000;
+    border: 2px solid grey;
+    height: 20px;
+    width: 20px;
+}
