@@ -20,6 +20,8 @@ class SketchCanvas extends Canvas {
         this.canvas.addEventListener('mouseup', this._endDraw.bind(this))
         this.canvas.addEventListener('wheel', this._changeBrushSize.bind(this))
         this.canvas.addEventListener('contextmenu', (e) => e.preventDefault())
+
+        this.disabled = false
     }
     setBrushSize(v) {
         this.brushRadius = v
@@ -33,6 +35,7 @@ class SketchCanvas extends Canvas {
         this.setBrushSize(brushRadius)
     }
     _startDraw(e) {
+        if (this.disabled) return
         this.onStartDraw()
         this.dragging = true
         this._continueDraw(e)
