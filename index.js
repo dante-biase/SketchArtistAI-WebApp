@@ -8,22 +8,30 @@ await model.load("./src/model_js/model.json", () => {
     const clearButton = document.getElementById("clear-btn")
     const saveButton = document.getElementById("save-btn")
 
+    var cancelPredicition = false
+
     sketchCanvas.onStartDraw = function() {
+        cancelPredicition  = false
         saveButton.disable()
         photoCanvas.setOpacity(.5)
     }
 
     sketchCanvas.onEndDraw = async function() {
-        const sketchImageData = sketchCanvas.getImageData()
-        const predictionImage = await model.predict(sketchImageData)
-        photoCanvas.putImageData(predictionImage)
+        if (!cancelPredicition) {
+            const sketchImageData = sketchCanvas.getImageData()
+            const predictionImage = await model.predict(sketchImageData)
+            photoCanvas.putImageData(predictionImage)
+        }
         photoCanvas.setOpacity(1)
         saveButton.enable()
     }
 
     clearButton.addEventListener('click', () => {
+        cancelPredicition = true
         sketchCanvas.clear()
         photoCanvas.clear()
+        photoCanvas.setOpacity(1)
+        saveButton.enable()
     })
 
     saveButton.addEventListener('click', () => {
